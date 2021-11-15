@@ -1,0 +1,24 @@
+Description
+
+For your homework this week, we’ll fix one glaring problem with our blog admin.
+As you created new categories and posts, and related them to each-other, how did you feel about that work?
+
+Although from a data perspective, the category model is the right place for the
+ManytoMany relationship to posts, this leads to awkward usage in the admin.
+It would be much easier if we could designate a category for a post from the Post admin.
+Your Assignment
+
+You’ll be reversing that relationship so that you can only add categories to posts
+
+Take the following steps:
+
+    Read the documentation again about the  Django admin.
+
+    You’ll need to create a customized  ModelAdmin  class for the  Post  and  Category  models.
+
+    And you’ll need to create an  InlineModelAdmin  to represent Categories on the Post admin view.
+
+    Finally, you’ll need to  exclude  the ‘posts’ field from the form in your  Category  admin.
+
+    All told, those changes should not require more than about 15 total lines of code.
+    The trick, of course, is reading and finding out which fifteen lines to write.
