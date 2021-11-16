@@ -6,7 +6,7 @@ from blogging.models import Post, Category
 #admin.site.register(Category)
 
 class CategoryInline(admin.TabularInline):
-    model = Category
+    model = Category.posts.through
 
 class PostAdmin(admin.ModelAdmin):
     inlines = [CategoryInline,]
