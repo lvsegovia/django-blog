@@ -10,7 +10,10 @@ class BloggingListView(ListView):
     '''
     model = Post
     '''
-    queryset = Post.objects.order_by('-published_date')
+    #queryset = Post.objects.filter(text__contains = 'are').order_by('-published_date') #filter specific text
+    #queryset = Post.objects.exclude(published_date__isnull = 'True').order_by('-published_date') #filter specific text
+    queryset = Post.objects.exclude(published_date__exact = None).order_by('-published_date') #filter specific text
+    #queryset = Post.objects.order_by('-published_date') # All entries, sorted
     template_name = 'blogging/list.html'
 
 
@@ -35,4 +38,18 @@ def detail_view(request, post_id):
         raise Http404
     context = {'post': post}
     return render(request, 'blogging/detail.html', context)
+'''
+
+
+''' this is what generic view is doing, more or less
+class ListView():
+    def as_view(self):
+        return self.get
+    def get(self, request):
+        model_list_name = self.model.__name__.lower() + '_list' # this is why we added poll_list in the .html
+        context = {model_list_name:self.model.objects.all()}
+        return render(request,self.template_name, context)
+class PollListView(ListView):
+    model = Poll
+    template_name = 'polling/list.html'
 '''
