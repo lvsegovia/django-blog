@@ -21,10 +21,9 @@ from .views import Home
 urlpatterns = [
     path("polling/", include("polling.urls")),
     path("admin/", admin.site.urls),
-    path('', Home.as_view(), name='home'),  # Add on #1
+    path("", Home.as_view(), name="home"),  # Add on #1
     path("blogging/", include("blogging.urls")),  # Add on #1
     path("login/", LoginView.as_view(template_name="login.html"), name="login"),
     path("logout/", LogoutView.as_view(next_page="/"), name="logout"),
-    path('accounts/', include('allauth.urls')), # Add on #1
-
+    path("accounts/", include("allauth.urls")),  # Add on #1
 ]
