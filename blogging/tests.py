@@ -47,14 +47,14 @@ class FrontEndTestCase(TestCase):
         resp = self.client.get('/')
         # the content of the rendered response is always a bytestring
         resp_text = resp.content.decode(resp.charset)
-        self.assertTrue("Recent Posts" in resp_text)
+        self.assertTrue("My Cool Posts" in resp_text)
         for count in range(1, 11):
             title = "Post %d Title" % count
             if count < 6:
                 self.assertContains(resp, title, count=1)
             else:
                 self.assertNotContains(resp, title)
-                
+
     def test_details_only_published(self):
         for count in range(1, 11):
             title = "Post %d Title" % count
